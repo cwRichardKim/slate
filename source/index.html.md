@@ -29,6 +29,10 @@ Our current MVP allows full access to all of the end points and thus does not re
 
 ## Get All Incidents
 
+```terminal
+curl http://incidentreport-120.herokuapp.com/incidents.json
+```
+
 > The http request returns JSON structured like this:
 
 ```json
@@ -76,6 +80,10 @@ This endpoint retrieves all incidents.
 
 ## Get a Specific Incident
 
+```terminal
+curl http://incidentreport-120.herokuapp.com/incidents/{incident_id}.json
+```
+
 > The http request returns JSON structured like this:
 
 ```json
@@ -101,7 +109,7 @@ This endpoint retrieves a specific incident.
 
 ### HTTP Request
 
-`GET http://incidentreport-120.herokuapp.com/incidents/<incident_id>.json`
+`GET http://incidentreport-120.herokuapp.com/incidents/{incident_id}.json`
 
 ### URL Parameters
 

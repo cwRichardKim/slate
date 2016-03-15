@@ -105,14 +105,16 @@ This endpoint retrieves a specific incident.
 
 ### URL Parameters
 
-Parameter | Description
---------- | -----------
-incident_id | The ID of the incident to retrieve
+Parameter | Value       | Description
+--------- | ----------- | -----------
+incident_id | int | The ID of the incident to retrieve
 
 ## Edit a Specific Incident
 
 
-> Sending an HTTP Form-Data PUTS to this endpoint with all the required fields will return json as follows
+> Sending an HTTP Form-Data PUTS to this endpoint with all the required fields will return json as follows:
+
+
 ```json
 {
   "id":1,
@@ -129,6 +131,7 @@ incident_id | The ID of the incident to retrieve
   "created_at":"2016-03-11T19:52:46.401Z",
   "updated_at":"2016-03-11T19:52:46.401Z"
 }
+```
 
 This endpoint edits a specified incident.
 
@@ -151,7 +154,8 @@ _method | 'patch'
 ## Create a New Incident
 
 
-> Sending an HTTP Form-Data POST to this endpoint with all the required fields will return json as follows
+> Sending an HTTP Form-Data POST to this endpoint with all the required fields will return json as follows:
+
 ```json
 {
   "id":1,

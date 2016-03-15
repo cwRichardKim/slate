@@ -170,7 +170,7 @@ _method | 'patch'
 }
 ```
 
-This endpoint creates a new incident. 
+This endpoint creates a new incident.
 
 
 ### HTTP Request
@@ -205,23 +205,31 @@ api.kittens.get(2)
 ```json
 {
   "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+  "first_name": "Max",
+  "last_name": "Maxerson",
+  "email": "email@email.com",
+  "phone": "(555)555-5555",
+  "group": "Chemistry Department",
+  "created_at": DateTime,
+  "updated_at": DateTime
 }
 ```
 
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+This endpoint creates a new User.
 
 ### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
+`POST http://incidentreport-120.herokuapp.com/users.json`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the kitten to retrieve
+user[first_name]* | string (limit: 60)
+user[last_name]* | string (limit: 60)
+user[password]* | string (limit: 255)
+user[email]* | string (limit: 255)
+user[phone]* | string (limit: 15)
+user[group]* | string (limit: 100)
+
+\*Required (cannot be null)

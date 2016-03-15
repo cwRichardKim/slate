@@ -29,85 +29,85 @@ Our current MVP allows full access to all of the end points and thus does not re
 
 ## Get All Incidents
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-> The above command returns JSON structured like this:
+> The http request returns JSON structured like this:
 
 ```json
 [
   {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
+    "id":1,
+    "title":"Example",
+    "location":"South Hall",
+    "severity":1,
+    "incident_type":"Housing",
+    "comments":"Example comments",
+    "user":"Demo User",
+    "groups":"Students",
+    "status":0,
+    "reported_by":null,
+    "assigned_to":null,
+    "created_at":"2016-03-11T19:52:46.401Z",
+    "updated_at":"2016-03-11T19:52:46.401Z"
   },
   {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
+    "id":2,
+    "title":"Example 2",
+    "location":"Lane Hall",
+    "severity":2,
+    "incident_type":"Health and Safety",
+    "comments":"Example comments",
+    "user":"Demo User",
+    "groups":"Campus Police",
+    "status":0,
+    "reported_by":null,
+    "assigned_to":null,
+    "created_at":"2016-03-11T19:52:46.401Z",
+    "updated_at":"2016-03-11T19:52:46.401Z"
   }
 ]
 ```
 
-This endpoint retrieves all kittens.
+This endpoint retrieves all incidents.
 
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
+`GET http://incidentreport-120.herokuapp.com/incidents.json`
 
-### Query Parameters
 
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
 
 ## Get a Specific Incident
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-> The above command returns JSON structured like this:
+> The http request returns JSON structured like this:
 
 ```json
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+  "id":1,
+  "title":"Example",
+  "location":"South Hall",
+  "severity":1,
+  "incident_type":"Housing",
+  "comments":"Example comments",
+  "user":"Demo User",
+  "groups":"Students",
+  "status":0,
+  "reported_by":null,
+  "assigned_to":null,
+  "created_at":"2016-03-11T19:52:46.401Z",
+  "updated_at":"2016-03-11T19:52:46.401Z"
 }
 ```
 
-This endpoint retrieves a specific kitten.
+This endpoint retrieves a specific incident.
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
 
 ### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
+`GET http://incidentreport-120.herokuapp.com/incidents/<incident_id>.json`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the kitten to retrieve
+incident_id | The ID of the incident to retrieve
 
 ## Edit a Specific Incident
 

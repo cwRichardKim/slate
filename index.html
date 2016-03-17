@@ -131,184 +131,223 @@
 <h1 id="incidents">Incidents</h1>
 
 <h2 id="get-all-incidents">Get All Incidents</h2>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
+<pre class="highlight plaintext"><code>curl http://incidentreport-120.herokuapp.com/incidents.json
 </code></pre>
 
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The http request returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"title"</span><span class="p">:</span><span class="s2">"Example"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"location"</span><span class="p">:</span><span class="s2">"South Hall"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"severity"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"incident_type"</span><span class="p">:</span><span class="s2">"Housing"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"comments"</span><span class="p">:</span><span class="s2">"Example comments"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"user"</span><span class="p">:</span><span class="s2">"Demo User"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"groups"</span><span class="p">:</span><span class="s2">"Students"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"reported_by"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"assigned_to"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="s2">"2016-03-11T19:52:46.401Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="s2">"2016-03-11T19:52:46.401Z"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"title"</span><span class="p">:</span><span class="s2">"Example 2"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"location"</span><span class="p">:</span><span class="s2">"Lane Hall"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"severity"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"incident_type"</span><span class="p">:</span><span class="s2">"Health and Safety"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"comments"</span><span class="p">:</span><span class="s2">"Example comments"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"user"</span><span class="p">:</span><span class="s2">"Demo User"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"groups"</span><span class="p">:</span><span class="s2">"Campus Police"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"reported_by"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"assigned_to"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"created_at"</span><span class="p">:</span><span class="s2">"2016-03-11T19:52:46.401Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="s2">"2016-03-11T19:52:46.401Z"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves all kittens.</p>
+<p>This endpoint retrieves all incidents.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/api/kittens</code></p>
-
-<h3 id="query-parameters">Query Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
-</tr>
-<tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
-</tr>
-</tbody></table>
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
+<p><code class="prettyprint">GET http://incidentreport-120.herokuapp.com/incidents.json</code></p>
 
 <h2 id="get-a-specific-incident">Get a Specific Incident</h2>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<pre class="highlight plaintext"><code>curl http://incidentreport-120.herokuapp.com/incidents/{incident_id}.json
 </code></pre>
 
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The http request returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"title"</span><span class="p">:</span><span class="s2">"Example"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"location"</span><span class="p">:</span><span class="s2">"South Hall"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"severity"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"incident_type"</span><span class="p">:</span><span class="s2">"Housing"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"comments"</span><span class="p">:</span><span class="s2">"Example comments"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"user"</span><span class="p">:</span><span class="s2">"Demo User"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"groups"</span><span class="p">:</span><span class="s2">"Students"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"reported_by"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"assigned_to"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="s2">"2016-03-11T19:52:46.401Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="s2">"2016-03-11T19:52:46.401Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">Inside HTML code blocks like this one, you can&rsquo;t use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+<p>This endpoint retrieves a specific incident.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/kittens/&lt;ID&gt;</code></p>
+<p><code class="prettyprint">GET http://incidentreport-120.herokuapp.com/incidents/{incident_id}.json</code></p>
 
 <h3 id="url-parameters">URL Parameters</h3>
 
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Value</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td>incident_id</td>
+<td>int</td>
+<td>The ID of the incident to retrieve</td>
 </tr>
 </tbody></table>
 
 <h2 id="edit-a-specific-incident">Edit a Specific Incident</h2>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre>
 
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Sending an HTTP Form-Data PUTS to this endpoint with all the required fields will return json as follows:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"title"</span><span class="p">:</span><span class="s2">"Example"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"location"</span><span class="p">:</span><span class="s2">"South Hall"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"severity"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"incident_type"</span><span class="p">:</span><span class="s2">"Housing"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"comments"</span><span class="p">:</span><span class="s2">"Example comments"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"user"</span><span class="p">:</span><span class="s2">"Demo User"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"groups"</span><span class="p">:</span><span class="s2">"Students"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"reported_by"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"assigned_to"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="s2">"2016-03-11T19:52:46.401Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="s2">"2016-03-11T19:52:46.401Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">Inside HTML code blocks like this one, you can&rsquo;t use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+<p>This endpoint edits a specified incident.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/kittens/&lt;ID&gt;</code></p>
+<p><code class="prettyprint">GET http://incidentreport-120.herokuapp.com/incidents/{incident id}.json</code></p>
 
-<h3 id="url-parameters">URL Parameters</h3>
+<h3 id="form-data">Form Data</h3>
 
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Key</th>
+<th>Value</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td>incident[title]</td>
+<td>string</td>
+</tr>
+<tr>
+<td>incident[location]</td>
+<td>string</td>
+</tr>
+<tr>
+<td>incident[comments]</td>
+<td>text</td>
+</tr>
+<tr>
+<td>incident[severity]</td>
+<td>integer between 1-4</td>
+</tr>
+<tr>
+<td>incident[incident_type]</td>
+<td>string</td>
+</tr>
+<tr>
+<td>incident[groups]</td>
+<td>string</td>
+</tr>
+<tr>
+<td>_method</td>
+<td>&lsquo;patch&rsquo;</td>
 </tr>
 </tbody></table>
 
 <h2 id="create-a-new-incident">Create a New Incident</h2>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre>
 
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Sending an HTTP Form-Data POST to this endpoint with all the required fields will return json as follows:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"title"</span><span class="p">:</span><span class="s2">"Example"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"location"</span><span class="p">:</span><span class="s2">"South Hall"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"severity"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"incident_type"</span><span class="p">:</span><span class="s2">"Housing"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"comments"</span><span class="p">:</span><span class="s2">"Example comments"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"user"</span><span class="p">:</span><span class="s2">"Demo User"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"groups"</span><span class="p">:</span><span class="s2">"Students"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"reported_by"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"assigned_to"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="s2">"2016-03-11T19:52:46.401Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="s2">"2016-03-11T19:52:46.401Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">Inside HTML code blocks like this one, you can&rsquo;t use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+<p>This endpoint creates a new incident.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/kittens/&lt;ID&gt;</code></p>
+<p><code class="prettyprint">GET http://incidentreport-120.herokuapp.com/incidents.json</code></p>
 
-<h3 id="url-parameters">URL Parameters</h3>
+<h3 id="form-data">Form Data</h3>
 
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Key</th>
+<th>Value</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td>incident[title]</td>
+<td>string</td>
+</tr>
+<tr>
+<td>incident[location]</td>
+<td>string</td>
+</tr>
+<tr>
+<td>incident[comments]</td>
+<td>text</td>
+</tr>
+<tr>
+<td>incident[severity]</td>
+<td>integer between 1-4</td>
+</tr>
+<tr>
+<td>incident[incident_type]</td>
+<td>string</td>
+</tr>
+<tr>
+<td>incident[groups]</td>
+<td>string</td>
 </tr>
 </tbody></table>
 
@@ -326,20 +365,21 @@ Remember — a happy kitten is an authenticated kitten!
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Maxerson"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email@email.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(555)555-5555"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chemistry Department"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="err">DateTime</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="err">DateTime</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">Inside HTML code blocks like this one, you can&rsquo;t use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+<p>This endpoint creates a new User.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://example.com/kittens/&lt;ID&gt;</code></p>
+<p><code class="prettyprint">POST http://incidentreport-120.herokuapp.com/users.json</code></p>
 
 <h3 id="url-parameters">URL Parameters</h3>
 
@@ -350,16 +390,36 @@ Remember — a happy kitten is an authenticated kitten!
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td>user[first_name]*</td>
+<td>string (limit: 60)</td>
+</tr>
+<tr>
+<td>user[last_name]*</td>
+<td>string (limit: 60)</td>
+</tr>
+<tr>
+<td>user[password]*</td>
+<td>string (limit: 255)</td>
+</tr>
+<tr>
+<td>user[email]*</td>
+<td>string (limit: 255)</td>
+</tr>
+<tr>
+<td>user[phone]*</td>
+<td>string (limit: 15)</td>
+</tr>
+<tr>
+<td>user[group]*</td>
+<td>string (limit: 100)</td>
 </tr>
 </tbody></table>
 
+<p>*Required (cannot be null)</p>
+
           <h1 id="errors">Errors</h1>
 
-<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files&hellip;just save them to the `includes` folder and add them to the top of your `index.md`&rsquo;s frontmatter. Files are included in the order listed.</aside>
-
-<p>The Kittn API uses the following error codes:</p>
+<p>The InstaPort API uses the following error codes:</p>
 
 <table><thead>
 <tr>
@@ -369,7 +429,7 @@ Remember — a happy kitten is an authenticated kitten!
 </thead><tbody>
 <tr>
 <td>400</td>
-<td>Bad Request &ndash; Your request sucks</td>
+<td>Bad Request &ndash; Your request not valid (eg: incorrect formatting)</td>
 </tr>
 <tr>
 <td>401</td>
@@ -377,15 +437,15 @@ Remember — a happy kitten is an authenticated kitten!
 </tr>
 <tr>
 <td>403</td>
-<td>Forbidden &ndash; The kitten requested is hidden for administrators only</td>
+<td>Forbidden &ndash; The incident requested is hidden for administrators only</td>
 </tr>
 <tr>
 <td>404</td>
-<td>Not Found &ndash; The specified kitten could not be found</td>
+<td>Not Found &ndash; The specified incident could not be found</td>
 </tr>
 <tr>
 <td>405</td>
-<td>Method Not Allowed &ndash; You tried to access a kitten with an invalid method</td>
+<td>Method Not Allowed &ndash; You tried to access an incident with an invalid method</td>
 </tr>
 <tr>
 <td>406</td>
@@ -393,15 +453,11 @@ Remember — a happy kitten is an authenticated kitten!
 </tr>
 <tr>
 <td>410</td>
-<td>Gone &ndash; The kitten requested has been removed from our servers</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&rsquo;m a teapot</td>
+<td>Gone &ndash; The incident requested has been removed from our servers</td>
 </tr>
 <tr>
 <td>429</td>
-<td>Too Many Requests &ndash; You&rsquo;re requesting too many kittens! Slow down!</td>
+<td>Too Many Requests &ndash; You&rsquo;re requesting too many incidents! Slow down!</td>
 </tr>
 <tr>
 <td>500</td>

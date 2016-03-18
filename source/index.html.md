@@ -2,7 +2,7 @@
 title: API Reference
 
 language_tabs:
-  - ruby
+  - console
 
 toc_footers:
   - <a href='https://incidentreport-120.herokuapp.com'>InstaPort Home</a>
@@ -153,7 +153,7 @@ This endpoint edits a specified incident.
 
 ### HTTP Request
 
-`PUT http://incidentreport-120.herokuapp.com/incidents/{incident id}.json`
+`PUT http://incidentreport-120.herokuapp.com/incidents/{INCIDENT ID}.json`
 
 ### Form Data
 

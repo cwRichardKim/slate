@@ -122,8 +122,6 @@
 
 <p>We have language bindings in Ruby! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
 
-<p>This API documentation page was created with <a href="https://github.com/tripit/slate">Slate</a>.</p>
-
 <h1 id="disclaimers">Disclaimers</h1>
 
 <h3 id="application-error-on-first-load">Application Error on First Load</h3>
@@ -372,10 +370,7 @@
 <h1 id="users">Users</h1>
 
 <h2 id="create-a-new-user">Create a New User</h2>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<pre class="highlight plaintext"><code>curl --data 'user[first_name]=Max&amp;user[last_name]=Maxerson&amp;user[password]=NotMyPassword&amp;user[email]=email@email.com&amp;user[phone]=(555)5555555&amp;user[group]=Chemistry' http://incidentreport-120.herokuapp.com/users.json
 </code></pre>
 
 <blockquote>
@@ -385,11 +380,12 @@
   </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
   </span><span class="nt">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Maxerson"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NotMyPassword"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email@email.com"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"(555)555-5555"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"group"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chemistry Department"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="err">DateTime</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="err">DateTime</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-18T00:14:05.120Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-18T00:14:05.120Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 

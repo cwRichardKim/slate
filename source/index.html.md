@@ -216,11 +216,8 @@ incident[groups] | string
 
 ## Create a New User
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
+```terminal
+curl --data 'user[first_name]=Max&user[last_name]=Maxerson&user[password]=NotMyPassword&user[email]=email@email.com&user[phone]=(555)5555555&user[group]=Chemistry' http://incidentreport-120.herokuapp.com/users.json
 ```
 
 > The above command returns JSON structured like this:
@@ -230,11 +227,12 @@ api.kittens.get(2)
   "id": 2,
   "first_name": "Max",
   "last_name": "Maxerson",
+  "password": "NotMyPassword",
   "email": "email@email.com",
   "phone": "(555)555-5555",
   "group": "Chemistry Department",
-  "created_at": DateTime,
-  "updated_at": DateTime
+  "created_at": "2016-03-18T00:14:05.120Z",
+  "updated_at": "2016-03-18T00:14:05.120Z"
 }
 ```
 

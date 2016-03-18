@@ -19,8 +19,6 @@ Welcome to the [InstaPort](https://incidentreport-120.herokuapp.com) API! You ca
 
 We have language bindings in Ruby! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
 
-This API documentation page was created with [Slate](https://github.com/tripit/slate).
-
 # Disclaimers
 
 ### Application Error on First Load

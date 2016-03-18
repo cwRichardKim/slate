@@ -124,9 +124,19 @@
 
 <p>This API documentation page was created with <a href="https://github.com/tripit/slate">Slate</a>.</p>
 
-<h1 id="authentication">Authentication</h1>
+<h1 id="disclaimers">Disclaimers</h1>
 
-<p>Our current MVP allows full access to all of the end points and thus does not require any Authentication.  We will update this section of the documents once our authentication component is complete.</p>
+<h3 id="application-error-on-first-load">Application Error on First Load</h3>
+
+<p>Heroku puts our app to sleep after <a href="https://devcenter.heroku.com/articles/dyno-sleeping#sleeping">30 minutes of inaction</a> (as per all free accounts).  This may cause the first ping to the server to return an application failure as it takes a significant amount of time to boot our app.  In the future, this can be fixed by upgrading our heroku account, but since we are still in MVP mode, we&rsquo;ve decided that it&rsquo;s a reasonable tradeoff.</p>
+
+<h3 id="security">Security</h3>
+
+<p>Though we plan to build security features in the future, we curently do not provide any security beyond what comes with rails.  Thus, User Authentication, API Access Verification, API Usage Limitation, and other security features are not included in this iteration of the product.</p>
+
+<h3 id="user-placeholders">User Placeholders</h3>
+
+<p>Currently, users do not share a relationship with Incidents.  Furthermore, there is no authentication for passwords, auth tokens, etc, and all user information is public.  We intend to improve these with the aforementioned security features.</p>
 
 <h1 id="incidents">Incidents</h1>
 
@@ -226,30 +236,34 @@
 <h2 id="edit-a-specific-incident">Edit a Specific Incident</h2>
 
 <blockquote>
-<p>Sending an HTTP Form-Data PUTS to this endpoint with all the required fields will return json as follows:</p>
+<p>Sending the following curl command:</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"title"</span><span class="p">:</span><span class="s2">"Example"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"location"</span><span class="p">:</span><span class="s2">"South Hall"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"severity"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"incident_type"</span><span class="p">:</span><span class="s2">"Housing"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"comments"</span><span class="p">:</span><span class="s2">"Example comments"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"user"</span><span class="p">:</span><span class="s2">"Demo User"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"groups"</span><span class="p">:</span><span class="s2">"Students"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"reported_by"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"assigned_to"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="s2">"2016-03-11T19:52:46.401Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="s2">"2016-03-11T19:52:46.401Z"</span><span class="w">
-</span><span class="p">}</span><span class="w">
+<pre class="highlight plaintext"><code>curl -X PUT --data 'incident[title]=A&amp;incident[location]=B&amp;incident[comments]=C&amp;incident[severity]=1&amp;incident[incident_type]=2&amp;incident[groups]=3' http://incidentreport-120.herokuapp.com/incidents/{INCIDENT ID NUMBER}.json
+</code></pre>
+
+<blockquote>
+<p>returns an object similar to the following JSON</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="err">INCIDENT</span><span class="w"> </span><span class="err">ID</span><span class="w"> </span><span class="err">NUMBER</span><span class="p">,</span><span class="w">
+</span><span class="nt">"title"</span><span class="p">:</span><span class="s2">"A"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"location"</span><span class="p">:</span><span class="s2">"B"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"severity"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+</span><span class="nt">"incident_type"</span><span class="p">:</span><span class="s2">"D"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"comments"</span><span class="p">:</span><span class="s2">"C"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"user"</span><span class="p">:</span><span class="s2">"Demo User"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"groups"</span><span class="p">:</span><span class="s2">"E"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"status"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+</span><span class="nt">"reported_by"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+</span><span class="nt">"assigned_to"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+</span><span class="nt">"created_at"</span><span class="p">:</span><span class="s2">"2016-03-17T20:35:00.068Z"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"updated_at"</span><span class="p">:</span><span class="s2">"2016-03-17T20:35:00.068Z"</span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <p>This endpoint edits a specified incident.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://incidentreport-120.herokuapp.com/incidents/{incident id}.json</code></p>
+<p><code class="prettyprint">PUT http://incidentreport-120.herokuapp.com/incidents/{incident id}.json</code></p>
 
 <h3 id="form-data">Form Data</h3>
 
@@ -292,30 +306,34 @@
 <h2 id="create-a-new-incident">Create a New Incident</h2>
 
 <blockquote>
-<p>Sending an HTTP Form-Data POST to this endpoint with all the required fields will return json as follows:</p>
+<p>Sending the following curl command:</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"title"</span><span class="p">:</span><span class="s2">"Example"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"location"</span><span class="p">:</span><span class="s2">"South Hall"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"severity"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"incident_type"</span><span class="p">:</span><span class="s2">"Housing"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"comments"</span><span class="p">:</span><span class="s2">"Example comments"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"user"</span><span class="p">:</span><span class="s2">"Demo User"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"groups"</span><span class="p">:</span><span class="s2">"Students"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"reported_by"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"assigned_to"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="s2">"2016-03-11T19:52:46.401Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="s2">"2016-03-11T19:52:46.401Z"</span><span class="w">
-</span><span class="p">}</span><span class="w">
+<pre class="highlight plaintext"><code>curl --data 'incident[title]=A&amp;incident[location]=B&amp;incident[comments]=C&amp;incident[severity]=1&amp;incident[incident_type]=2&amp;incident[groups]=3' http://incidentreport-120.herokuapp.com/incidents.json
+</code></pre>
+
+<blockquote>
+<p>returns an object similar to the following JSON</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+</span><span class="nt">"title"</span><span class="p">:</span><span class="s2">"A"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"location"</span><span class="p">:</span><span class="s2">"B"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"severity"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+</span><span class="nt">"incident_type"</span><span class="p">:</span><span class="s2">"D"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"comments"</span><span class="p">:</span><span class="s2">"C"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"user"</span><span class="p">:</span><span class="s2">"Demo User"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"groups"</span><span class="p">:</span><span class="s2">"E"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"status"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+</span><span class="nt">"reported_by"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+</span><span class="nt">"assigned_to"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+</span><span class="nt">"created_at"</span><span class="p">:</span><span class="s2">"2016-03-17T20:35:00.068Z"</span><span class="p">,</span><span class="w">
+</span><span class="nt">"updated_at"</span><span class="p">:</span><span class="s2">"2016-03-17T20:35:00.068Z"</span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <p>This endpoint creates a new incident.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://incidentreport-120.herokuapp.com/incidents.json</code></p>
+<p><code class="prettyprint">POST http://incidentreport-120.herokuapp.com/incidents.json</code></p>
 
 <h3 id="form-data">Form Data</h3>
 

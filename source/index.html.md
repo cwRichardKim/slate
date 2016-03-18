@@ -21,9 +21,16 @@ We have language bindings in Ruby! You can view code examples in the dark area t
 
 This API documentation page was created with [Slate](https://github.com/tripit/slate).
 
-# Authentication
+# Disclaimers
 
-Our current MVP allows full access to all of the end points and thus does not require any Authentication.  We will update this section of the documents once our authentication component is complete.
+### Application Error on First Load
+Heroku puts our app to sleep after [30 minutes of inaction](https://devcenter.heroku.com/articles/dyno-sleeping#sleeping) (as per all free accounts).  This may cause the first ping to the server to return an application failure as it takes a significant amount of time to boot our app.  In the future, this can be fixed by upgrading our heroku account, but since we are still in MVP mode, we've decided that it's a reasonable tradeoff.
+
+### Security
+Though we plan to build security features in the future, we curently do not provide any security beyond what comes with rails.  Thus, User Authentication, API Access Verification, API Usage Limitation, and other security features are not included in this iteration of the product.
+
+### User Placeholders
+Currently, users do not share a relationship with Incidents.  Furthermore, there is no authentication for passwords, auth tokens, etc, and all user information is public.  We intend to improve these with the aforementioned security features.
 
 # Incidents
 
@@ -123,7 +130,7 @@ incident_id | int | The ID of the incident to retrieve
 > Sending the following curl command:
 
 ```terminal
-curl -X PUT --data 'incident[title]=A&incident[location]=B&incident[comments]=C&incident[severity]=1&incident[incident_type]=2&incident[groups]=3' http://incidentreport-dev.herokuapp.com/incidents/{INCIDENT ID NUMBER}.json
+curl -X PUT --data 'incident[title]=A&incident[location]=B&incident[comments]=C&incident[severity]=1&incident[incident_type]=2&incident[groups]=3' http://incidentreport-120.herokuapp.com/incidents/{INCIDENT ID NUMBER}.json
 ```
 
 > returns an object similar to the following JSON
@@ -167,7 +174,7 @@ _method | 'patch'
 > Sending the following curl command:
 
 ```terminal
-curl --data 'incident[title]=A&incident[location]=B&incident[comments]=C&incident[severity]=1&incident[incident_type]=2&incident[groups]=3' http://incidentreport-dev.herokuapp.com/incidents.json
+curl --data 'incident[title]=A&incident[location]=B&incident[comments]=C&incident[severity]=1&incident[incident_type]=2&incident[groups]=3' http://incidentreport-120.herokuapp.com/incidents.json
 ```
 
 > returns an object similar to the following JSON
